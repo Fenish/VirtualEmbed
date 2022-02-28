@@ -2,3 +2,4 @@
 !src/virtualembed.egg-info
 !setup.cfg
 !pyproject.toml
+!.idea
