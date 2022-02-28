@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.cfg
+src/virtualembed/__init__.py
+src/virtualembed/embedimage.py
+src/virtualembed/virtualembed.py
+src/virtualembed.egg-info/PKG-INFO
+src/virtualembed.egg-info/SOURCES.txt
+src/virtualembed.egg-info/dependency_links.txt
+src/virtualembed.egg-info/top_level.txt
