@@ -111,8 +111,8 @@ def virtualembed_from_embed(embed):
             virtualembed = VirtualEmbed()
             virtualembed.json = {"embed": dc_embed}
             virtualembed.title = dc_embed.get("title")
-            virtualembed.color = dc_embed.get("title")
-            virtualembed.description = dc_embed.get("title")
+            virtualembed.color = dc_embed.get("color")
+            virtualembed.description = dc_embed.get("description")
             return virtualembed
         raise ValueError("The parameter must be Discord Embed")
     except ModuleNotFoundError:
