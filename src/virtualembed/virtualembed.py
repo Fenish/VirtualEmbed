@@ -1,12 +1,13 @@
 import json
 import base64
+import urllib.request
 
 from .embedimage import EmbedImage
-import urllib.request
+from importlib.metadata import version
 
 
 class VirtualEmbed:
-    def __init__(self, bot_avatar: str = "", title:str="", description:str="", color:str=""):
+    def __init__(self, bot_avatar: str = "", title: str = "", description: str = "", color: str = ""):
         self._title = title
         self._description = description
         self._color = color
@@ -21,7 +22,11 @@ class VirtualEmbed:
         self.json = {
             'embed': {
                 'type': 'rich',
-                'fields': []
+                'fields': [],
+                 "footer": {
+                     "text": f"VirtualEmbed V{version('virtualembed')}",
+                     "icon_url": ""
+                }
             }
         }
 
@@ -60,14 +65,14 @@ class VirtualEmbed:
         self._description = description
         self.json["embed"]["description"] = description
 
-    def get_embed_json(self):
+    def get_json(self):
         return self.json
 
     def get_base_url(self):
         return f"https://glitchii.github.io/embedbuilder/?username={self.bot_name}&verified=&avatar={self.bot_avatar}&data="
 
     def get_embed_as_image(self):
-        html_encoded = urllib.parse.quote(str(json.dumps(self.get_embed_json())))
+        html_encoded = urllib.parse.quote(str(json.dumps(self.get_json())))
         message_bytes = html_encoded.encode('ascii')
         base64_bytes = base64.b64encode(message_bytes)
         embed_url = urllib.parse.quote(self.get_base_url() + base64_bytes.decode("utf-8"))
@@ -80,7 +85,7 @@ class VirtualEmbed:
             "value": value,
             "inline": inline
         }
-        self.get_embed_json()["embed"]["fields"].append(field)
+        self.json["embed"]["fields"].append(field)
 
     def set_thumbnail(self, image_url: str):
         thumbnail = {
@@ -89,7 +94,11 @@ class VirtualEmbed:
             }
         }
         self.thumbnail = image_url
-        self.get_embed_json()["embed"].update(thumbnail)
+        self.json["embed"].update(thumbnail)
+
+    def remove_thumbnail(self):
+        self.thumbnail = None
+        del self.json["embed"]["thumbnail"]
 
     def set_image(self, image_url: str):
         thumbnail = {
@@ -98,7 +107,11 @@ class VirtualEmbed:
             }
         }
         self.image = image_url
-        self.get_embed_json()["embed"].update(thumbnail)
+        self.json["embed"].update(thumbnail)
+
+    def remove_image(self):
+        self.thumbnail = None
+        del self.json["embed"]["image"]
 
     def set_author(self, name: str, icon_url: str = None):
         author = {
@@ -109,7 +122,11 @@ class VirtualEmbed:
         }
         self.author_name = name
         self.author_icon = icon_url
-        self.get_embed_json()["embed"].update(author)
+        self.json["embed"].update(author)
+
+    def remove_author(self):
+        self.thumbnail = None
+        del self.json["embed"]["author"]
 
 
 def virtualembed_from_embed(embed):
