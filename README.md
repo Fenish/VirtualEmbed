@@ -1,5 +1,7 @@
 # Virtual Embed
-[![name](https://img.shields.io/pypi/v/virtualembed?style=for-the-badge)](https://pypi.org/project/virtualembed/)\
+[![name](https://img.shields.io/pypi/v/virtualembed?style=for-the-badge)](https://pypi.org/project/virtualembed/)
+[![CodeFactor](https://www.codefactor.io/repository/github/fenish/virtualembed/badge)](https://www.codefactor.io/repository/github/fenish/virtualembed)
+
 With this api you can get your embeds as image (If you want to create embed visualizer for your bot, this api is for you!)
 
 **Installation**
