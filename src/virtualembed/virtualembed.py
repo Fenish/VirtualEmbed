@@ -12,10 +12,10 @@ class VirtualEmbed:
         self._color = color
         self._bot_name = "Clyde"
 
-        self._thumbnail = None
-        self._image = None
-        self._author_name = None
-        self._author_icon = None
+        self.thumbnail = None
+        self.image = None
+        self.author_name = None
+        self.author_icon = None
 
         self.bot_avatar = bot_avatar
         self.json = {
@@ -88,7 +88,7 @@ class VirtualEmbed:
                 "url": image_url
             }
         }
-        self._thumbnail = image_url
+        self.thumbnail = image_url
         self.get_embed_json()["embed"].update(thumbnail)
 
     def set_image(self, image_url: str):
@@ -97,7 +97,7 @@ class VirtualEmbed:
                 "url": image_url
             }
         }
-        self._image = image_url
+        self.image = image_url
         self.get_embed_json()["embed"].update(thumbnail)
 
     def set_author(self, name: str, icon_url: str = None):
@@ -107,8 +107,8 @@ class VirtualEmbed:
                 "icon_url": icon_url
             }
         }
-        self._author_name = name
-        self._author_icon = icon_url
+        self.author_name = name
+        self.author_icon = icon_url
         self.get_embed_json()["embed"].update(author)
 
 

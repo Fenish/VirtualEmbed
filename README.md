@@ -17,8 +17,8 @@ If you have discord embed already you can convert into virtualembed
 embed = discord.Embed()
 embed.title = "test"
 embed.description = "test"
-embed.add_field(name="31", value="31", inline=True)
-embed.add_field(name="31", value="31", inline=True)
+embed.add_field(name="Virtual Embeds?", value="Virtual EMBEDSS !!", inline=True)
+embed.add_field(name="Whats python?", value="Python IS AWESOME!!", inline=True)
 
 
 virtualembed = virtualembed_from_embed(e)
