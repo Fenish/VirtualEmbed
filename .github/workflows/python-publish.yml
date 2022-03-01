@@ -12,6 +12,7 @@ on:
   push:
     paths:
       - '**.cfg'
+      - 'src/virtualembed/**'
 
 jobs:
   deploy:
