@@ -54,7 +54,6 @@ class VirtualEmbed:
 
     @color.setter
     def color(self, color:Union[str, int]):
-        print(color)
         if isinstance(color, str):
             if color.startswith("#"):
                 if len(color) == 4:
