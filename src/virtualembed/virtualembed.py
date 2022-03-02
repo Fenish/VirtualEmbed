@@ -2,6 +2,7 @@ import json
 import base64
 import urllib.request
 
+from typing import Union
 from .embedimage import EmbedImage
 from importlib.metadata import version
 
@@ -52,7 +53,21 @@ class VirtualEmbed:
         return self._color
 
     @color.setter
-    def color(self, color):
+    def color(self, color:Union[str, int]):
+        print(color)
+        if isinstance(color, str):
+            if color.startswith("#"):
+                if len(color) == 4:
+                    _t = "0x"
+                    for character in color[1:]:
+                        _t += 2*character
+                    color = int(_t, 16)
+                elif len(color) == 7:
+                    color = int(color.replace("#", "0x"), 16)
+                else:
+                    raise ValueError('Color must be 3 character hex string , 6 character hex string or hexadecimal. Check this page for color codes: https://htmlcolorcodes.com')
+            else:
+                raise ValueError("Please insert valid color code: https://htmlcolorcodes.com")
         self._color = color
         self.json["embed"]["color"] = color
 
