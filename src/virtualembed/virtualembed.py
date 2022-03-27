@@ -90,10 +90,10 @@ class VirtualEmbed:
         message_bytes = html_encoded.encode('ascii')
         base64_bytes = base64.b64encode(message_bytes)
         embed_url = urllib.parse.quote(self.get_base_url() + base64_bytes.decode("utf-8"))
-        screenshot = f"https://api.screenshotmachine.com?key=09b279&url={embed_url}&device=desktop&dimension=1024x768&format=jpg&selector=body%20%3E%20div%20%3E%20section.side2%20%3E%20div.msgEmbed"
+        screenshot = f"https://api.popcat.xyz/screenshot?url={embed_url}"
         return EmbedImage(screenshot)
 
-    def add_field(self, name: str, value: str, inline: bool):
+    def add_field(self, name: str, value: str, inline: bool = False):
         field = {
             "name": name,
             "value": value,
